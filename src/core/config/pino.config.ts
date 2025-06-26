@@ -18,18 +18,7 @@ const consoleTransport = {
   stream: process.stdout,
 };
 
-const socketTransport = pino.transport({
-  target: 'pino-socket',
-  options: {
-    address: '159.223.125.10',
-    port: 5050,
-    mode: 'tcp',
-    reconnect: true,
-    timeout: 3000,
-  },
-});
-
 export const configuration = pino(
   pinoConfig,
-  pino.multistream([consoleTransport, socketTransport])
+  pino.multistream([consoleTransport])
 );
